@@ -1,6 +1,6 @@
 import { ArrowDown } from "lucide-react";
 import ProfileCard from "./ProfileCard";
-import avatar from "../assets/smol.png";
+import avatar from "../assets/avatar.png";
 import ShinyText from "../components/ui/ShinyText";
 
 export const HeroSection = () => {
@@ -43,7 +43,7 @@ export const HeroSection = () => {
             contactText="Contact Me"
             avatarUrl={avatar}
             showUserInfo={false}
-            enableTilt={false}
+            enableTilt={true}
             enableMobileTilt={false}
             onContactClick={() => {}}
           />

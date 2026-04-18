@@ -43,7 +43,7 @@ export const AboutHero = () => {
             contactText="Contact Me"
             avatarUrl={avatar}
             showUserInfo={false}
-            enableTilt={false}
+            enableTilt={true}
             enableMobileTilt={false}
             onContactClick={() => {}}
           />
