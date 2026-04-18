@@ -166,3 +166,30 @@
   padding: 0;
   text-align: center;
 }
+
+.route-shell {
+  min-height: 100vh;
+}
+
+.section-shell {
+  width: 100%;
+  border-radius: 1.5rem;
+  background:
+    radial-gradient(circle at top, rgba(167, 139, 250, 0.18), transparent 45%),
+    rgba(15, 23, 42, 0.22);
+}
+
+.hero-backdrop {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(58, 41, 255, 0.24), transparent 30%),
+    radial-gradient(circle at 80% 25%, rgba(255, 148, 180, 0.2), transparent 25%),
+    radial-gradient(circle at 50% 100%, rgba(255, 50, 50, 0.12), transparent 32%);
+  pointer-events: none;
+}
+
+.hero-title {
+  display: inline-block;
+  animation: fade-in 0.5s ease-out forwards;
+}

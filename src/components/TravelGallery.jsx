@@ -1,6 +1,6 @@
-import CircularGallery from "../components/ui/CircularGallery";
-import RollingGallery from "../components/ui/RollingGallery";
-import Galaxy from "../components/ui/Galaxy";
+import { Suspense, lazy } from "react";
+
+const CircularGallery = lazy(() => import("../components/ui/CircularGallery"));
 
 
 export const TravelGallery = () => {
@@ -10,21 +10,7 @@ export const TravelGallery = () => {
       className="py-24 px-4 relative overflow-hidden"
       style={{ minHeight: "80vh" }}
     >
-      {/* Softer but more visible Galaxy Background */}
-      {/* <div className="absolute inset-0 z-0 opacity-85 blur-[0.7px]">
-        <Galaxy
-          mouseRepulsion={false}
-          mouseInteraction={false}
-          density={0.7}
-          glowIntensity={0.3}
-          saturation={0.4}
-          hueShift={150}
-        />
-      </div> */}
-
-      {/* Foreground Content */}
       <div className="relative z-10 text-center">
-        {/* Heading */}
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             A <span className="text-glow">Journey</span> Through My Adventures
@@ -35,7 +21,6 @@ export const TravelGallery = () => {
           </h3>
         </div>
 
-        {/* Full-width Circular Gallery */}
         <div
           style={{
             height: "400px",
@@ -43,12 +28,14 @@ export const TravelGallery = () => {
             width: "100vw",
           }}
         >
-          <CircularGallery
-            bend={3}
-            textColor="#ffffff"
-            borderRadius={0.05}
-            scrollEase={0.02}
-          />
+          <Suspense fallback={<div className="section-shell h-full w-full" aria-hidden="true" />}>
+            <CircularGallery
+              bend={3}
+              textColor="#ffffff"
+              borderRadius={0.05}
+              scrollEase={0.02}
+            />
+          </Suspense>
         </div>
       </div>
     </section>

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { motion, useMotionValue, useAnimation, useTransform } from "framer-motion"; 
+import { motion as Motion, useMotionValue, useAnimation, useTransform } from "framer-motion"; 
 import "./RollingGallery.css";
 
 const IMGS = [
@@ -101,7 +101,7 @@ const RollingGallery = ({ autoplay = false, pauseOnHover = false, images = [] })
     <div className="gallery-container">
       {/* gradients removed for clean edges */}
       <div className="gallery-content">
-        <motion.div
+        <Motion.div
           drag="x"
           className="gallery-track"
           onMouseEnter={handleMouseEnter} 
@@ -127,10 +127,16 @@ const RollingGallery = ({ autoplay = false, pauseOnHover = false, images = [] })
                 margin: "20 20px", // 🔹 gap between items
               }}
             >
-              <img src={url} alt={`creative-${i}`} className="gallery-img" />
+              <img
+                src={url}
+                alt={`creative-${i}`}
+                className="gallery-img"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
           ))}
-        </motion.div>
+        </Motion.div>
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+import DeferredSection from "../components/DeferredSection";
 import { ThemeToggle } from "../components/ThemeToggle"
 import { CustomBackground } from "../components/CustomBackground"
 import { NavBar } from "../components/NavBar"
@@ -10,6 +11,8 @@ import { TechStack } from "../components/TechStack"
 
 
 export const Home = () => {
+    const sectionPlaceholder = <div className="section-shell" aria-hidden="true" />;
+
     return <div className="min-h-screen 
     bg-background
     text-foreground overflow-x-hidden"> 
@@ -23,9 +26,15 @@ export const Home = () => {
         <main>
             <HeroSection />
             <About />
-            <TechStack />
-            <Projects />
-            <Contact />
+            <DeferredSection minHeight="40vh" fallback={sectionPlaceholder}>
+                <TechStack />
+            </DeferredSection>
+            <DeferredSection minHeight="55vh" fallback={sectionPlaceholder}>
+                <Projects />
+            </DeferredSection>
+            <DeferredSection minHeight="45vh" fallback={sectionPlaceholder}>
+                <Contact />
+            </DeferredSection>
         </main>
 
         <Footer />

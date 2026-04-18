@@ -1,4 +1,6 @@
-import RollingGallery from "../components/ui/RollingGallery";
+import { Suspense, lazy } from "react";
+
+const RollingGallery = lazy(() => import("../components/ui/RollingGallery"));
 
 
 export const CreativeSpace = () => {
@@ -9,9 +11,7 @@ export const CreativeSpace = () => {
       style={{ minHeight: "50vh" }}
     >
 
-      {/* Foreground Content */}
       <div className="relative z-10 text-center">
-        {/* Heading */}
         <div className="container mx-auto max-w-8xl">
         <h2 className="text-3xl md:text-4xl font-bold mb-6">
             A <span className="text-glow">Glimpse</span> Into My Creative Side
@@ -22,7 +22,9 @@ export const CreativeSpace = () => {
         </h3>
         </div>
 
-        <RollingGallery autoplay={true} pauseOnHover={true} />
+        <Suspense fallback={<div className="section-shell h-[340px] w-full" aria-hidden="true" />}>
+          <RollingGallery autoplay={true} pauseOnHover={true} />
+        </Suspense>
 
       </div>
     </section>
