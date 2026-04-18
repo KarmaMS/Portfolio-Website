@@ -2,9 +2,8 @@ import { Github } from "lucide-react";
 import cloud from "../assets/cloudSec.jpg";
 import net from "../assets/netSim.jpg";
 import web from "../assets/webSPA.png";
-import layout from "../assets/layout.png";
+import salahiyat from "../assets/salahiyat.png";
 import gat from "../assets/GAT.png";
-import noon from "../assets/noonFS.png";
 import Orb from "../components/ui/Orb";
 
 const projects = [
@@ -37,7 +36,7 @@ const projects = [
   },
   {
     id: 4,
-    img: layout,
+    img: salahiyat,
     descriptor: "HCI",
     title: "Salahiyat",
     description:
@@ -56,7 +55,7 @@ const projects = [
   },
   {
     id: 6,
-    img: noon,
+    img: net,
     descriptor: "Systems",
     title: "Network Simulation",
     description:

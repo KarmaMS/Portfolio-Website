@@ -12,21 +12,29 @@ export const About = () => {
             ],
         },
         {
-            icon: <Cloud className="h-6 w-6" />,
-            title: "Cloud Development Teaching Assistant @ LUMS",
-            meta: "Jan 2026 - Present",
+            icon: <ShieldCheck className="h-6 w-6" />,
+            title: "Cloud Security @ Johri Technologies",
+            meta: "Oct 2023 - Apr 2024",
             points: [
-                "Manage Azure subscriptions, student roles, resource groups, and cloud access for the course's lab environment.",
-                "Help students debug secure deployments, hub-spoke VPN setups, and storage pipelines while reviewing assignments.",
+                "Developed 80+ AWS RQL policies to enforce security best practices across MFA, least-privilege, and encryption controls.",
+                "Built sandbox environments and Azure CSPM detections to validate findings and improve onboarding speed.",
             ],
         },
         {
             icon: <ShieldCheck className="h-6 w-6" />,
-            title: "Cloud Security + SaaS Audit @ Johri Technologies",
-            meta: "Oct 2023 - Aug 2024",
+            title: "SaaS Security Auditor @ Johri Technologies",
+            meta: "May 2024 - Aug 2024",
             points: [
-                "Developed and validated 80+ AWS RQL policies, built Azure CSPM detections, and created onboarding docs that cut ramp-up time.",
-                "Led SaaS security audits covering identity, encryption, incident response, and compliance, documenting 40+ control gaps and remediation plans.",
+                "Led security audits for 5 SaaS vendors covering identity, encryption, incident response, and compliance.",
+                "Identified 40+ control gaps and delivered remediation-focused reports that improved audit closure rate by 30%.",
+            ],
+        },
+        {
+            icon: <Cloud className="h-6 w-6" />,
+            title: "Cloud Dev TA @ LUMS",
+            meta: "Jan 2026 - Present",
+            points: [
+                "Manage Azure subscriptions, cloud access, and lab infrastructure while helping students debug secure deployments.",
             ],
         },
     ];
@@ -85,6 +93,7 @@ export const About = () => {
                     <LucideBriefcase size={35} className="text-primary" />
                     </span>
                     <h1>Experience</h1>
+                    <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
                     {experience.map((role) => (
                         <div key={role.title} className="gradient-border p-6 card-hover">
                             <div className="flex items-start gap-4">
@@ -106,6 +115,7 @@ export const About = () => {
                             </div>
                         </div>
                     ))}
+                    </div>
                 </div>
 
             </div>

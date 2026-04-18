@@ -1,19 +1,17 @@
 import React, { useEffect, useRef, useCallback, useMemo } from "react";
-import { Code } from "lucide-react";
 import "./ui/ProfileCard.css";
 
 const DEFAULT_BEHIND_GRADIENT =
-  "radial-gradient(farthest-side circle at var(--pointer-x) var(--pointer-y),hsla(266,100%,90%,var(--card-opacity)) 4%,hsla(266,50%,80%,calc(var(--card-opacity)*0.75)) 10%,hsla(266,25%,70%,calc(var(--card-opacity)*0.5)) 50%,hsla(266,0%,60%,0) 100%),radial-gradient(35% 52% at 55% 20%,#00ffaac4 0%,#073aff00 100%),radial-gradient(100% 100% at 50% 50%,#00c1ffff 1%,#073aff00 76%),conic-gradient(from 124deg at 50% 50%,#c137ffff 0%,#07c6ffff 40%,#07c6ffff 60%,#c137ffff 100%)";
+  "radial-gradient(circle at var(--pointer-x) var(--pointer-y), rgba(124, 92, 255, 0.18), transparent 32%), radial-gradient(circle at 20% 15%, rgba(0, 193, 255, 0.12), transparent 24%), linear-gradient(160deg, rgba(11, 18, 39, 0.96), rgba(13, 20, 42, 0.92))";
 
 const DEFAULT_INNER_GRADIENT =
-  "linear-gradient(145deg,#60496e8c 0%,#71C4FF44 100%)";
+  "linear-gradient(160deg, rgba(22, 30, 58, 0.86), rgba(9, 14, 31, 0.96) 55%, rgba(26, 34, 61, 0.9))";
 
 const ANIMATION_CONFIG = {
-  SMOOTH_DURATION: 600,
-  INITIAL_DURATION: 1500,
-  INITIAL_X_OFFSET: 70,
-  INITIAL_Y_OFFSET: 60,
+  SMOOTH_DURATION: 260,
   DEVICE_BETA_OFFSET: 20,
+  MAX_ROTATION_X: 9,
+  MAX_ROTATION_Y: 8,
 };
 
 const clamp = (value, min = 0, max = 100) =>
@@ -36,8 +34,8 @@ const easeInOutCubic = (x) =>
 
 const ProfileCardComponent = ({
   avatarUrl = "<Placeholder for avatar URL>",
-  iconUrl = { Code },
-  grainUrl = { Code },
+  iconUrl = null,
+  grainUrl = null,
   behindGradient,
   innerGradient,
   showBehindGradient = true,
@@ -56,6 +54,7 @@ const ProfileCardComponent = ({
 }) => {
   const wrapRef = useRef(null);
   const cardRef = useRef(null);
+  const frameRef = useRef(null);
 
   const animationHandlers = useMemo(() => {
     if (!enableTilt) return null;
@@ -80,13 +79,13 @@ const ProfileCardComponent = ({
       const properties = {
         "--pointer-x": `${percentX}%`,
         "--pointer-y": `${percentY}%`,
-        "--background-x": `${adjust(percentX, 0, 100, 35, 65)}%`,
-        "--background-y": `${adjust(percentY, 0, 100, 35, 65)}%`,
+        "--background-x": `${adjust(percentX, 0, 100, 42, 58)}%`,
+        "--background-y": `${adjust(percentY, 0, 100, 42, 58)}%`,
         "--pointer-from-center": `${clamp(Math.hypot(percentY - 50, percentX - 50) / 50, 0, 1)}`,
         "--pointer-from-top": `${percentY / 100}`,
         "--pointer-from-left": `${percentX / 100}`,
-        "--rotate-x": `${round(-(centerX / 5))}deg`,
-        "--rotate-y": `${round(centerY / 4)}deg`,
+        "--rotate-x": `${round(-(centerX / 50) * ANIMATION_CONFIG.MAX_ROTATION_X)}deg`,
+        "--rotate-y": `${round((centerY / 50) * ANIMATION_CONFIG.MAX_ROTATION_Y)}deg`,
       };
 
       Object.entries(properties).forEach(([property, value]) => {
@@ -143,12 +142,16 @@ const ProfileCardComponent = ({
       if (!card || !wrap || !animationHandlers) return;
 
       const rect = card.getBoundingClientRect();
-      animationHandlers.updateCardTransform(
-        event.clientX - rect.left,
-        event.clientY - rect.top,
-        card,
-        wrap
-      );
+      const nextX = event.clientX - rect.left;
+      const nextY = event.clientY - rect.top;
+
+      if (frameRef.current) {
+        cancelAnimationFrame(frameRef.current);
+      }
+
+      frameRef.current = requestAnimationFrame(() => {
+        animationHandlers.updateCardTransform(nextX, nextY, card, wrap);
+      });
     },
     [animationHandlers]
   );
@@ -192,7 +195,7 @@ const ProfileCardComponent = ({
       if (!card || !wrap || !animationHandlers) return;
 
       const { beta, gamma } = event;
-      if (!beta || !gamma) return;
+      if (beta == null || gamma == null) return;
 
       animationHandlers.updateCardTransform(
         card.clientHeight / 2 + gamma * mobileTiltSensitivity,
@@ -238,14 +241,9 @@ const ProfileCardComponent = ({
     card.addEventListener("pointerleave", pointerLeaveHandler);
     card.addEventListener("click", handleClick);
 
-    const initialX = wrap.clientWidth - ANIMATION_CONFIG.INITIAL_X_OFFSET;
-    const initialY = ANIMATION_CONFIG.INITIAL_Y_OFFSET;
-
-    animationHandlers.updateCardTransform(initialX, initialY, card, wrap);
-    animationHandlers.createSmoothAnimation(
-      ANIMATION_CONFIG.INITIAL_DURATION,
-      initialX,
-      initialY,
+    animationHandlers.updateCardTransform(
+      wrap.clientWidth / 2,
+      wrap.clientHeight / 2,
       card,
       wrap
     );
@@ -256,6 +254,10 @@ const ProfileCardComponent = ({
       card.removeEventListener("pointerleave", pointerLeaveHandler);
       card.removeEventListener("click", handleClick);
       window.removeEventListener('deviceorientation', deviceOrientationHandler);
+      if (frameRef.current) {
+        cancelAnimationFrame(frameRef.current);
+        frameRef.current = null;
+      }
       animationHandlers.cancelAnimation();
     };
   }, [
@@ -288,7 +290,7 @@ const ProfileCardComponent = ({
   return (
     <div
       ref={wrapRef}
-      className={`pc-card-wrapper ${className}`.trim()}
+      className={`pc-card-wrapper ${enableTilt ? "pc-interactive" : ""} ${className}`.trim()}
       style={cardStyle}
     >
       <section ref={cardRef} className="pc-card">
