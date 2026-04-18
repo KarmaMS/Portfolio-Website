@@ -6,7 +6,7 @@ const RollingGallery = lazy(() => import("../components/ui/RollingGallery"));
 export const CreativeSpace = () => {
   return (
     <section
-      id="travel-gallery"
+      id="creative-space"
       className="px-4 relative overflow-hidden"
       style={{ minHeight: "50vh" }}
     >
@@ -23,7 +23,12 @@ export const CreativeSpace = () => {
         </div>
 
         <Suspense fallback={<div className="section-shell h-[340px] w-full" aria-hidden="true" />}>
-          <RollingGallery autoplay={true} pauseOnHover={true} />
+          <RollingGallery
+            autoplay={true}
+            pauseOnHover={true}
+            autoplayInterval={4200}
+            autoplayDuration={3.4}
+          />
         </Suspense>
 
       </div>

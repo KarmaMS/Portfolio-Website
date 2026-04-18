@@ -20,8 +20,14 @@ const IMGS = [
   "/creative/Scinertia.png",
 ];
 
-const RollingGallery = ({ autoplay = false, pauseOnHover = false, images = [] }) => {
-  images = IMGS; 
+const RollingGallery = ({
+  autoplay = false,
+  pauseOnHover = false,
+  images = [],
+  autoplayInterval = 2500,
+  autoplayDuration = 2,
+}) => {
+  images = images.length ? images : IMGS; 
   const [isScreenSizeSm, setIsScreenSizeSm] = useState(window.innerWidth <= 640);
 
   // 🔹 Make gallery circle wider so images don't overlap
@@ -55,14 +61,14 @@ const RollingGallery = ({ autoplay = false, pauseOnHover = false, images = [] })
       autoplayRef.current = setInterval(() => {
         controls.start({
           rotateY: rotation.get() - (360 / faceCount),
-          transition: { duration: 2, ease: "linear" },
+          transition: { duration: autoplayDuration, ease: "easeInOut" },
         });
         rotation.set(rotation.get() - (360 / faceCount));
-      }, 2500);
+      }, autoplayInterval);
 
       return () => clearInterval(autoplayRef.current);
     }
-  }, [autoplay, rotation, controls, faceCount]);
+  }, [autoplay, rotation, controls, faceCount, autoplayDuration, autoplayInterval]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -83,17 +89,17 @@ const RollingGallery = ({ autoplay = false, pauseOnHover = false, images = [] })
     if (autoplay && pauseOnHover) {
       controls.start({
         rotateY: rotation.get() - (360 / faceCount),
-        transition: { duration: 2, ease: "linear" },
+        transition: { duration: autoplayDuration, ease: "easeInOut" },
       });
       rotation.set(rotation.get() - (360 / faceCount));
 
       autoplayRef.current = setInterval(() => {
         controls.start({
           rotateY: rotation.get() - (360 / faceCount),
-          transition: { duration: 2, ease: "linear" },
+          transition: { duration: autoplayDuration, ease: "easeInOut" },
         });
         rotation.set(rotation.get() - (360 / faceCount));
-      }, 2500);
+      }, autoplayInterval);
     }
   };
 

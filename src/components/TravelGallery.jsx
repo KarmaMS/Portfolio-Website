@@ -33,7 +33,9 @@ export const TravelGallery = () => {
               bend={3}
               textColor="#ffffff"
               borderRadius={0.05}
-              scrollEase={0.02}
+              scrollEase={0.03}
+              scrollSpeed={1.2}
+              wobbleResponse={0.1}
             />
           </Suspense>
         </div>

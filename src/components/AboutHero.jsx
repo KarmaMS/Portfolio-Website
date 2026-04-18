@@ -48,7 +48,7 @@ export const AboutHero = () => {
             onContactClick={() => {}}
           />
 
-          <a href="#next-section" className="animate-bounce mt-6">
+          <a href="#travel-gallery" className="animate-bounce mt-6">
             <ArrowDown className="h-8 w-8 text-primary opacity-80 hover:opacity-100 transition" />
           </a>
         </div>

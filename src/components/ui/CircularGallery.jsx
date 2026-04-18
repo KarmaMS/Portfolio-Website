@@ -25,7 +25,7 @@ function autoBind(instance) {
 }
 
 class Media {
-  constructor({ geometry, gl, image, index, length, renderer, scene, screen, viewport, bend, borderRadius = 0 }) {
+  constructor({ geometry, gl, image, index, length, renderer, scene, screen, viewport, bend, borderRadius = 0, wobbleResponse = 0.1 }) {
     this.extra = 0;
     this.geometry = geometry;
     this.gl = gl;
@@ -38,6 +38,7 @@ class Media {
     this.viewport = viewport;
     this.bend = bend;
     this.borderRadius = borderRadius;
+    this.wobbleResponse = wobbleResponse;
     this.createShader();
     this.createMesh();
     this.onResize();
@@ -60,7 +61,7 @@ class Media {
         void main() {
           vUv = uv;
           vec3 p = position;
-          p.z = (sin(p.x * 4.0 + uTime) * 1.5 + cos(p.y * 2.0 + uTime) * 1.5) * (0.1 + uSpeed * 0.5);
+          p.z = (sin(p.x * 4.0 + uTime) * 0.55 + cos(p.y * 2.0 + uTime) * 0.55) * (0.04 + uSpeed * 0.18);
           gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.0);
         }
       `,
@@ -130,8 +131,8 @@ class Media {
     this.plane.rotation.z = 0;
 
     this.speed = scroll.current - scroll.last;
-    this.program.uniforms.uTime.value += 0.04;
-    this.program.uniforms.uSpeed.value = this.speed;
+    this.program.uniforms.uTime.value += 0.025;
+    this.program.uniforms.uSpeed.value = Math.abs(this.speed) * this.wobbleResponse;
 
     const planeOffset = this.plane.scale.x / 2;
     const viewportOffset = this.viewport.width / 2;
@@ -164,10 +165,11 @@ class Media {
 }
 
 class App {
-  constructor(container, { items, bend, borderRadius = 0.05, scrollSpeed = 2, scrollEase = 0.05 } = {}) {
+  constructor(container, { items, bend, borderRadius = 0.05, scrollSpeed = 2, scrollEase = 0.05, wobbleResponse = 0.1 } = {}) {
     document.documentElement.classList.remove("no-js");
     this.container = container;
     this.scrollSpeed = scrollSpeed;
+    this.wobbleResponse = wobbleResponse;
     this.scroll = { ease: scrollEase, current: 0, target: 0, last: 0 };
     this.onCheckDebounce = debounce(this.onCheck, 200);
     this.createRenderer();
@@ -242,6 +244,7 @@ class App {
         viewport: this.viewport,
         bend,
         borderRadius,
+        wobbleResponse: this.wobbleResponse,
       });
     });
   }
@@ -324,13 +327,13 @@ class App {
   }
 }
 
-export default function CircularGallery({ items, bend = 3, borderRadius = 0.05, scrollSpeed = 2, scrollEase = 0.05 }) {
+export default function CircularGallery({ items, bend = 3, borderRadius = 0.05, scrollSpeed = 2, scrollEase = 0.05, wobbleResponse = 0.1 }) {
   const containerRef = useRef(null);
   const appRef = useRef(null);
 
   useEffect(() => {
     if (containerRef.current) {
-      appRef.current = new App(containerRef.current, { items, bend, borderRadius, scrollSpeed, scrollEase });
+      appRef.current = new App(containerRef.current, { items, bend, borderRadius, scrollSpeed, scrollEase, wobbleResponse });
     }
     return () => {
       if (appRef.current) {
@@ -338,7 +341,7 @@ export default function CircularGallery({ items, bend = 3, borderRadius = 0.05, 
         appRef.current = null;
       }
     };
-  }, [items, bend, borderRadius, scrollSpeed, scrollEase]);
+  }, [items, bend, borderRadius, scrollSpeed, scrollEase, wobbleResponse]);
 
   return <div ref={containerRef} style={{ width: "100%", height: "100%", position: "relative", overflow: "hidden" }} />;
 }

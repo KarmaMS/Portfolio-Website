@@ -1,6 +1,36 @@
-import { Code, GraduationCap, LucideBriefcase } from "lucide-react"
+import { BriefcaseBusiness, Cloud, GraduationCap, LucideBriefcase, ShieldCheck } from "lucide-react"
 
 export const About = () => {
+    const experience = [
+        {
+            icon: <BriefcaseBusiness className="h-6 w-6" />,
+            title: "Technical Consultant @ Johri Technologies",
+            meta: "Feb 2026 - Present",
+            points: [
+                "Support CNAPP, AVS, Cohesity, and Wiz consulting engagements through runbooks, controls matrices, LOE estimates, and client-facing technical deliverables.",
+                "Translate cloud-security requirements into architecture notes and deployment plans for enterprise environments.",
+            ],
+        },
+        {
+            icon: <Cloud className="h-6 w-6" />,
+            title: "Cloud Development Teaching Assistant @ LUMS",
+            meta: "Jan 2026 - Present",
+            points: [
+                "Manage Azure subscriptions, student roles, resource groups, and cloud access for the course's lab environment.",
+                "Help students debug secure deployments, hub-spoke VPN setups, and storage pipelines while reviewing assignments.",
+            ],
+        },
+        {
+            icon: <ShieldCheck className="h-6 w-6" />,
+            title: "Cloud Security + SaaS Audit @ Johri Technologies",
+            meta: "Oct 2023 - Aug 2024",
+            points: [
+                "Developed and validated 80+ AWS RQL policies, built Azure CSPM detections, and created onboarding docs that cut ramp-up time.",
+                "Led SaaS security audits covering identity, encryption, incident response, and compliance, documenting 40+ control gaps and remediation plans.",
+            ],
+        },
+    ];
+
     return (
     <section id="about" className="py-24 px-4 relative">
         <div className="container mx-auto max-w-5xl">
@@ -24,8 +54,8 @@ export const About = () => {
                         Computer Science
                     </p>
 
-                    <p className="text-muted foreground">
-                        I'm passionate about cybersecurity, cloud security, and systems engineering, with experience in policy automation, audits, and scalable software. This site highlights my projects and thoughts at the intersection of security and software.
+                    <p className="text-muted-foreground">
+                        I'm a computer science student focused on cloud security, systems, and software engineering. My work spans cloud policy automation, SaaS audits, technical consulting, secure infrastructure, and human-centered product design.
                     </p>    
 
                     <div className="flex flex-col sm:flex-row gap-4 pt4 justify-center">
@@ -33,8 +63,8 @@ export const About = () => {
                             Get In Touch
                         </a>
                         <a 
-                            href="/Maaz_Shahid_Resume.pdf" 
-                            download="Maaz_Shahid_Resume.pdf"
+                            href="/Maaz Shahid - Resume.pdf" 
+                            download="Maaz Shahid - Resume.pdf"
                             className="px-6 py-2 rounded-full border border-primary text-white hover:bg-primary/10 transition-colors duration-300"
                         >
                             Download Resume
@@ -51,48 +81,31 @@ export const About = () => {
 
                     
 
-                   <span className="flex justify-center space-x-4">
+                    <span className="flex justify-center space-x-4">
                     <LucideBriefcase size={35} className="text-primary" />
                     </span>
                     <h1>Experience</h1>
-                    <div className="gradient-border p-6 card-hover">
-                        
-                        <div className="flex items-start gap-4">
-                            <div className="p-3 rounded-full bg-primary/10">
-                                <Code className="h-6 w-6"/>
-                            </div>
+                    {experience.map((role) => (
+                        <div key={role.title} className="gradient-border p-6 card-hover">
+                            <div className="flex items-start gap-4">
+                                <div className="p-3 rounded-full bg-primary/10">
+                                    {role.icon}
+                                </div>
 
-                            <div>
-                                <h1 className="font-semibold text-left">Cloud Security @ Johri Technologies</h1>
-                                <ul className="list-disc list-inside text-sm text-gray-600 mt-2 space-y-1 text-left">
-                                    <li>Developed 80+ AWS RQL policies to enforce security best practices (MFA, least-privilege, encryption).</li>
-                                    <li>Built sandbox environments to validate policies with more than 90% detection accuracy.</li>
-                                    <li>Automated JSON workflows, reducing policy development time by 40%.</li>
-                                    <li>Reverse-engineered Azure APIs to enable Prisma Cloud CSPM with 30+ custom policies.</li>
-                                    <li>Presented CSA CCM-Azure mapping to Morgan Stanley's cloud security team.</li>
-                                </ul>
+                                <div>
+                                    <div className="flex flex-col gap-1 text-left">
+                                        <h1 className="font-semibold">{role.title}</h1>
+                                        <p className="text-sm text-muted-foreground">{role.meta}</p>
+                                    </div>
+                                    <ul className="list-disc list-inside text-sm text-gray-600 mt-2 space-y-1 text-left">
+                                        {role.points.map((point) => (
+                                            <li key={point}>{point}</li>
+                                        ))}
+                                    </ul>
+                                </div>
                             </div>
-
                         </div>
-                    </div>
-                    <div className="gradient-border p-6 card-hover">
-                        <div className="flex items-start gap-4">
-                            <div className="p-3 rounded-full bg-primary/10">
-                                <Code className="h-6 w-6"/>
-                            </div>
-
-                            <div>
-                                <h1 className="font-semibold text-left">SaaS Security Auditor @ Johri Technologies</h1>
-                                <ul className="list-disc list-inside text-sm text-gray-600 mt-2 space-y-1 text-left">
-                                    <li>Led security audits for 5 SaaS vendors, covering identity, encryption, IR, and compliance.</li>
-                                    <li>Identified 40+ control gaps and built client-facing dashboards with risk classifications.</li>
-                                    <li>Delivered audit reports with remediation plans, improving closure rate by 30%.</li>
-                                    <li>Streamlined QA processes and client communications, cutting overhead by 50%.</li>
-                                </ul>
-                            </div>
-
-                        </div>
-                    </div>
+                    ))}
                 </div>
 
             </div>

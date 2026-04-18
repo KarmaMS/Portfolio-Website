@@ -2,11 +2,23 @@ import { Github } from "lucide-react";
 import cloud from "../assets/cloudSec.jpg";
 import net from "../assets/netSim.jpg";
 import web from "../assets/webSPA.png";
+import layout from "../assets/layout.png";
+import gat from "../assets/GAT.png";
+import noon from "../assets/noonFS.png";
 import Orb from "../components/ui/Orb";
 
 const projects = [
   {
     id: 1,
+    img: net,
+    descriptor: "Security + Systems",
+    title: "Network Security Labs",
+    description:
+      "Built and secured a multi-tier billing application on Oracle Cloud with auth flows, access control, and session handling, while also analyzing CSRF/XSS and memory-corruption exploits using GDB.",
+    tags: ["Python", "FastAPI", "Oracle Cloud", "GDB"],
+  },
+  {
+    id: 2,
     img: cloud,
     descriptor: "Cloud Security",
     title: "Cloud Security Policy Automation",
@@ -15,16 +27,25 @@ const projects = [
     tags: ["AWS", "Prisma Cloud", "JSON", "RQL"],
   },
   {
-    id: 2,
-    img: net,
-    descriptor: "Systems",
-    title: "Network Simulation",
+    id: 3,
+    img: gat,
+    descriptor: "Research",
+    title: "AI Coding Agents in Blockchain Repositories",
     description:
-      "Designed and implemented DV/LS routing simulations, a Distributed Hash Table (DHT), and windowed packet transfer for packet-switched networks.",
-    tags: ["Python", "Networking Algorithms"],
+      "Co-authored an MSR Mining Challenge paper studying 497 AI-agent pull requests across 162 blockchain repositories to understand contribution patterns in security-critical software.",
+    tags: ["Software Mining", "Research", "AI Agents", "Blockchain"],
   },
   {
-    id: 3,
+    id: 4,
+    img: layout,
+    descriptor: "HCI",
+    title: "Salahiyat",
+    description:
+      "Co-led an HCI project on privacy literacy for older adults in Pakistan, turning field interviews into a guided Figma prototype with voice support and safer digital-learning flows.",
+    tags: ["Figma", "HCI", "User Research"],
+  },
+  {
+    id: 5,
     img: web,
     descriptor: "Web Dev",
     title: "Cabinets Web SPA",
@@ -32,6 +53,15 @@ const projects = [
       "A React/TypeScript Single Page Application (20+ routes) with modular UI, responsive grids, lazy-loaded media, and automated asset labeling/ordering.",
     tags: ["React", "TypeScript", "React Router", "Tailwind CSS"],
     link: "https://cabinets-karmams.vercel.app/", // 👈 live site link
+  },
+  {
+    id: 6,
+    img: noon,
+    descriptor: "Systems",
+    title: "Network Simulation",
+    description:
+      "Designed and implemented DV/LS routing simulations, a Distributed Hash Table (DHT), and windowed packet transfer for packet-switched networks.",
+    tags: ["Python", "Networking Algorithms"],
   },
 ];
 
@@ -74,6 +104,8 @@ export const Projects = () => {
                   src={project.img}
                   alt={project.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <span className="absolute bottom-2 right-2 bg-primary/60 text-primary-foreground text-xs font-semibold px-3 py-1 rounded-full shadow">
                   {project.descriptor}

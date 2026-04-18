@@ -10,12 +10,19 @@ export const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get("name")?.toString().trim() || "Portfolio visitor";
+    const email = formData.get("email")?.toString().trim() || "";
+    const message = formData.get("message")?.toString().trim() || "";
+    const subject = encodeURIComponent(`Portfolio contact from ${name}`);
+    const body = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+    );
 
-    setTimeout(() => {
-      toast({
-        title: "Message sent!",
-        description: "Thanks for the message!",
-      });
+    window.location.href = `mailto:27100445@lums.edu.pk?subject=${subject}&body=${body}`;
+    toast({
+      title: "Email draft opened",
+      description: "This form opens your mail app. A backend or form service is needed for true direct sending.",
     });
   };
 
@@ -82,7 +89,7 @@ export const Contact = () => {
               <div className="flex flex-col items-center justify-center">
                 <div className="p-3 rounded-full bg-primary/10 mb-1">
                   <a
-                    href="https://www.linkedin.com/in/maaz-shahid-lums/"
+                    href="https://www.linkedin.com/in/maaz-lums/"
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -92,7 +99,7 @@ export const Contact = () => {
                 <div>
                   <h4 className="font-medium"> LinkedIn </h4>
                   <a
-                    href="https://www.linkedin.com/in/maaz-shahid-lums/"
+                    href="https://www.linkedin.com/in/maaz-lums/"
                     className="text-muted-foreground hover:text-primary transition-colors"
                     target="_blank"
                     rel="noreferrer"
@@ -190,15 +197,18 @@ export const Contact = () => {
                   "w-full flex items-center justify-center gap-2"
                 )}
               >
-                <Send size={16} /> Send
+                <Send size={16} /> Draft Email
               </button>
             </form>
+            <p className="mt-4 text-sm text-muted-foreground text-left">
+              Reliable website-to-email delivery on Vercel needs a backend or form service such as Resend, Formspree, or EmailJS.
+            </p>
           </div>
 
           {/* Extra Info About Me */}
           <div className="mt-6 text-center">
             <Link
-              to="/additional-info"
+              to="/additional-info#hero"
               className="inline-block px-8 py-4 mt-4 border border-primary rounded-full text-primary hover:bg-primary/10 transition-colors"
             >
               <ShinyText
