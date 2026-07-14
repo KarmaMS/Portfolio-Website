@@ -1,45 +1,25 @@
-import { Suspense, lazy } from "react";
+const photos = [
+  ["/travel/IMG_7031.webp", "Mountain landscape captured during a trip"],
+  ["/travel/IMG_6705.webp", "Travel photograph by Maaz Shahid"],
+  ["/travel/IMG_6828.webp", "Outdoor landscape photographed by Maaz Shahid"],
+  ["/travel/IMG_4488.webp", "Architectural travel photograph"],
+  ["/travel/IMG_9977.webp", "A quiet moment from Maaz’s travels"],
+  ["/travel/IMG_6769.webp", "Scenic travel photograph"],
+];
 
-const CircularGallery = lazy(() => import("../components/ui/CircularGallery"));
-
-
-export const TravelGallery = () => {
-  return (
-    <section
-      id="travel-gallery"
-      className="py-24 px-4 relative overflow-hidden"
-      style={{ minHeight: "80vh" }}
-    >
-      <div className="relative z-10 text-center">
-        <div className="container mx-auto max-w-6xl">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            A <span className="text-glow">Journey</span> Through My Adventures
-          </h2>
-
-          <h3 className="text-muted-foreground mb-12">
-            Exploring and capturing places, and moments that rejuvenate me &lt;3
-          </h3>
-        </div>
-
-        <div
-          style={{
-            height: "400px",
-            position: "relative",
-            width: "100vw",
-          }}
-        >
-          <Suspense fallback={<div className="section-shell h-full w-full" aria-hidden="true" />}>
-            <CircularGallery
-              bend={3}
-              textColor="#ffffff"
-              borderRadius={0.05}
-              scrollEase={0.03}
-              scrollSpeed={1.2}
-              wobbleResponse={0.1}
-            />
-          </Suspense>
-        </div>
-      </div>
-    </section>
-  );
-};
+export const TravelGallery = () => (
+  <section className="gallery-section section-pad" id="travel">
+    <div className="wrap section-heading">
+      <p className="eyebrow">Field notes</p>
+      <h2>Places that reset my perspective.</h2>
+      <p>A small, deliberately edited selection—because a good gallery should leave room to look.</p>
+    </div>
+    <div className="photo-grid wrap">
+      {photos.map(([src, alt], index) => (
+        <figure key={src} className={index === 0 || index === 3 ? "photo-wide" : ""}>
+          <img src={src} alt={alt} loading="lazy" decoding="async" />
+        </figure>
+      ))}
+    </div>
+  </section>
+);

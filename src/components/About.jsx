@@ -1,126 +1,60 @@
-import { BriefcaseBusiness, Cloud, GraduationCap, LucideBriefcase, ShieldCheck } from "lucide-react"
+import { BriefcaseBusiness, CloudCog, GraduationCap, ShieldCheck } from "lucide-react";
+import { createElement } from "react";
 
-export const About = () => {
-    const experience = [
-        {
-            icon: <BriefcaseBusiness className="h-6 w-6" />,
-            title: "Technical Consultant @ Johri Technologies",
-            meta: "Feb 2026 - Present",
-            points: [
-                "Support CNAPP, AVS, Cohesity, and Wiz consulting engagements through runbooks, controls matrices, LOE estimates, and client-facing technical deliverables.",
-                "Translate cloud-security requirements into architecture notes and deployment plans for enterprise environments.",
-            ],
-        },
-        {
-            icon: <ShieldCheck className="h-6 w-6" />,
-            title: "Cloud Security @ Johri Technologies",
-            meta: "Oct 2023 - Apr 2024",
-            points: [
-                "Developed 80+ AWS RQL policies to enforce security best practices across MFA, least-privilege, and encryption controls.",
-                "Built sandbox environments and Azure CSPM detections to validate findings and improve onboarding speed.",
-            ],
-        },
-        {
-            icon: <ShieldCheck className="h-6 w-6" />,
-            title: "SaaS Security Auditor @ Johri Technologies",
-            meta: "May 2024 - Aug 2024",
-            points: [
-                "Led security audits for 5 SaaS vendors covering identity, encryption, incident response, and compliance.",
-                "Identified 40+ control gaps and delivered remediation-focused reports that improved audit closure rate by 30%.",
-            ],
-        },
-        {
-            icon: <Cloud className="h-6 w-6" />,
-            title: "Cloud Dev TA @ LUMS",
-            meta: "Jan 2026 - Present",
-            points: [
-                "Manage Azure subscriptions, cloud access, and lab infrastructure while helping students debug secure deployments.",
-            ],
-        },
-    ];
+const experience = [
+  {
+    icon: BriefcaseBusiness,
+    role: "Technical Consultant",
+    company: "Johri Technologies",
+    date: "Feb 2026 — Present",
+    summary: "Supporting CNAPP, Azure VMware Solution, Cohesity, and Wiz engagements with runbooks, control matrices, architecture notes, estimates, proposals, and deployment plans.",
+  },
+  {
+    icon: GraduationCap,
+    role: "Teaching Assistant — Cloud Development & Pakistan Studies",
+    company: "LUMS",
+    date: "Aug 2025 — Present",
+    summary: "Managing Azure access and lab infrastructure for secure cloud deployments while also mentoring students in analytical work across Pakistan’s historical and social contexts.",
+  },
+  {
+    icon: ShieldCheck,
+    role: "SaaS Security Auditor",
+    company: "Johri Technologies",
+    date: "May 2024 — Aug 2024",
+    summary: "Led five vendor audits across identity, encryption, incident response, and compliance; classified 40+ control gaps and delivered remediation plans that improved closure rates by 30%.",
+  },
+  {
+    icon: CloudCog,
+    role: "Cloud Security Associate",
+    company: "Johri Technologies",
+    date: "Oct 2023 — Apr 2024",
+    summary: "Engineered and validated 80+ AWS and 33 Azure Prisma Cloud policies, built test environments, and created documentation that cut onboarding time in half.",
+  },
+];
 
-    return (
-    <section id="about" className="py-24 px-4 relative">
-        <div className="container mx-auto max-w-5xl">
-            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-                <span>About Me</span>
-            </h2>
+export const About = () => (
+  <section className="section-pad experience-section" id="experience">
+    <div className="wrap split-heading">
+      <div>
+        <p className="eyebrow">Experience</p>
+        <h2>From policy logic to production decisions.</h2>
+      </div>
+      <div className="education-note">
+        <GraduationCap size={20} />
+        <p><strong>BS Computer Science, LUMS</strong><span>Expected May 2027 · Major GPA 3.52</span></p>
+      </div>
+    </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div className="space-y-6">
-                    <span className="flex justify-center space-x-4">
-                    <GraduationCap size={35} className="text-primary" />
-                    </span>
-                    <h3 className="text-2xl font-semibold flex justify-center mb-0.5">  
-                        <span>Lahore University of Management and Sciences</span>   
-                    </h3>
-                    <p className="text-center italic text-muted-foreground mb-3">
-                        Expected Graduation - June 2027
-                    </p>
-
-                    <p className="text-muted-foreground siz"> 
-                        Computer Science
-                    </p>
-
-                    <p className="text-muted-foreground">
-                        I'm a computer science student focused on cloud security, systems, and software engineering. My work spans cloud policy automation, SaaS audits, technical consulting, secure infrastructure, and human-centered product design.
-                    </p>    
-
-                    <div className="flex flex-col sm:flex-row gap-4 pt4 justify-center">
-                        <a href="#contact" className="cosmic-button">
-                            Get In Touch
-                        </a>
-                        <a 
-                            href="/Maaz Shahid - Resume.pdf" 
-                            download="Maaz Shahid - Resume.pdf"
-                            className="px-6 py-2 rounded-full border border-primary text-white hover:bg-primary/10 transition-colors duration-300"
-                        >
-                            Download Resume
-                        </a>
-                    </div>
-
-                </div>
-                
-            
-
-                <div className="grid grid-cols-1 gap-6">
-
-                    
-
-                    
-
-                    <span className="flex justify-center space-x-4">
-                    <LucideBriefcase size={35} className="text-primary" />
-                    </span>
-                    <h1>Experience</h1>
-                    <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
-                    {experience.map((role) => (
-                        <div key={role.title} className="gradient-border p-6 card-hover">
-                            <div className="flex items-start gap-4">
-                                <div className="p-3 rounded-full bg-primary/10">
-                                    {role.icon}
-                                </div>
-
-                                <div>
-                                    <div className="flex flex-col gap-1 text-left">
-                                        <h1 className="font-semibold">{role.title}</h1>
-                                        <p className="text-sm text-muted-foreground">{role.meta}</p>
-                                    </div>
-                                    <ul className="list-disc list-inside text-sm text-gray-600 mt-2 space-y-1 text-left">
-                                        {role.points.map((point) => (
-                                            <li key={point}>{point}</li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-    
-    )
-}
+    <div className="experience-list wrap">
+      {experience.map(({ icon, role, company, date, summary }, index) => (
+        <article className="experience-row" key={role}>
+          <span className="experience-index">0{index + 1}</span>
+          <div className="experience-icon">{createElement(icon, { size: 20 })}</div>
+          <div className="experience-title"><h3>{role}</h3><p>{company}</p></div>
+          <time>{date}</time>
+          <p className="experience-summary">{summary}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+);

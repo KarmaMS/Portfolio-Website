@@ -1,54 +1,45 @@
-import { ArrowDown } from "lucide-react";
-import ProfileCard from "./ProfileCard";
-import avatar from "../assets/avatar.png";
-import ShinyText from "../components/ui/ShinyText";
+import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 
-export const HeroSection = () => {
-  return (
-    <section
-      id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center px-4 overflow-hidden"
-    >
-      <div className="hero-backdrop" aria-hidden="true" />
+const highlights = [
+  ["80+", "cloud policies engineered"],
+  ["497", "agent-authored PRs studied"],
+  ["5", "SaaS vendors audited"],
+];
 
-      <div className="container max-w-4xl mx-auto text-center z-10 flex flex-col items-center justify-center space-y-10">
-        <div className="space-y-6 mt-32">
-          <h1 className="text-5xl md:text-6xl font-bold tracking-tight leading-snug">
-            <span className="hero-title text-glow">Hi, I&apos;m Maaz</span>
-          </h1>
-
-          <p className="text-md md:text-lg max-w-2xl mx-auto">
-            <ShinyText 
-              text="Software, Security & Systems." 
-              speed={3}
-              disabled={false} 
-              className="text-muted-foreground"
-            />
-          </p>
-
-          <div className="pt-4 opacity-0 animate-fade-in-delay-4 -mt-3 mb-1">
-            <a href="#projects" className="cosmic-button animate-float">
-              View My Work
-            </a>
-          </div>
-        </div>
-
-        {/* Profile Card below text */}
-        <div className="flex justify-center scale-90 -mt-10">
-          <ProfileCard
-            name="Maaz Shahid"
-            title="Cyber Security & SWE"
-            handle=""
-            status="Online"
-            contactText="Contact Me"
-            avatarUrl={avatar}
-            showUserInfo={false}
-            enableTilt={true}
-            enableMobileTilt={false}
-            onContactClick={() => {}}
-          />
+export const HeroSection = () => (
+  <section className="hero section-pad" id="top">
+    <div className="hero-grid wrap">
+      <div className="hero-copy">
+        <p className="eyebrow"><span /> Lahore, Pakistan · Available for ambitious work</p>
+        <h1>I build at the edge of <em>security</em>, software, and systems.</h1>
+        <p className="hero-intro">
+          I’m Maaz Shahid—a computer science student and technical consultant turning complex cloud,
+          security, and product problems into useful, well-documented systems.
+        </p>
+        <div className="hero-actions">
+          <a className="button button-primary" href="#projects">
+            Explore selected work <ArrowDownRight size={18} />
+          </a>
+          <a className="text-link" href="mailto:27100445@lums.edu.pk">
+            Start a conversation <ArrowUpRight size={17} />
+          </a>
         </div>
       </div>
-    </section>
-  );
-};
+
+      <div className="portrait-wrap">
+        <div className="portrait-label">Security-minded. Product-aware.</div>
+        <img src="/maaz-portrait.webp" alt="Maaz Shahid" width="720" height="900" fetchPriority="high" />
+      </div>
+    </div>
+
+    <div className="hero-proof wrap" aria-label="Selected impact">
+      {highlights.map(([number, label]) => (
+        <div className="proof-item" key={label}>
+          <strong>{number}</strong>
+          <span>{label}</span>
+        </div>
+      ))}
+      <p>Cloud security · Technical consulting · Applied research · Product engineering</p>
+    </div>
+  </section>
+);

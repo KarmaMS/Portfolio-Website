@@ -1,36 +1,22 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { Suspense, lazy } from "react"
-import { NotFound } from "./pages/NotFound"
-import { Toaster } from "./components/ui/toaster"
-import ScrollToTop from "./components/ScrollToTop";
-// import { Analytics } from "@vercel/analytics/next"
-import SplashCursor from './components/ui/SplashCursor'
+import { lazy, Suspense } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Home } from "./pages/Home";
+import { NotFound } from "./pages/NotFound";
 
-const Home = lazy(() =>
-  import("./pages/Home").then((module) => ({ default: module.Home }))
-);
-const About = lazy(() =>
+const AboutPage = lazy(() =>
   import("./pages/About").then((module) => ({ default: module.About }))
 );
 
-function App() {
-
+export default function App() {
   return (
-    <>
-      {/* <SplashCursor /> */}
-      <Toaster />
-      <BrowserRouter>
-        <ScrollToTop />
-        <Suspense fallback={<div className="route-shell" aria-hidden="true" />}>
-          <Routes>
-            <Route index element={<Home />} />
-            <Route path="/additional-info" element={<About />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Suspense>
-      </BrowserRouter>
-    </>
-  )
+    <BrowserRouter>
+      <Suspense fallback={<div className="page-loading" aria-label="Loading page" />}>
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="/additional-info" element={<AboutPage />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
+    </BrowserRouter>
+  );
 }
-
-export default App
