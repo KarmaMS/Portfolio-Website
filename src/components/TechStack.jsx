@@ -1,8 +1,8 @@
 const groups = [
-  ["Build", ["Python", "C / C++", "React", "FastAPI", "HTML / CSS"]],
-  ["Secure", ["AWS", "Azure", "Oracle Cloud", "Prisma Cloud", "RQL"]],
+  ["Build", ["Python", "C / C++", "TypeScript", "React", "FastAPI", "HTML / CSS"]],
+  ["Secure", ["AWS", "Azure", "Oracle Cloud", "Wiz", "Prisma Cloud", "RQL", "CCSK"]],
   ["Investigate", ["GDB", "Linux", "Bash", "Network analysis", "Applied cryptography"]],
-  ["Deliver", ["Git", "Docker", "Figma", "LaTeX", "Technical writing"]],
+  ["Deliver", ["Terraform", "GitLab", "Git", "Docker", "Figma", "LaTeX", "Technical writing"]],
 ];
 
 export const TechStack = () => (

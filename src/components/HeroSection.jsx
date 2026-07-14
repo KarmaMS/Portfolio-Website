@@ -1,4 +1,5 @@
 import { ArrowDownRight, ArrowUpRight } from "lucide-react";
+import { ProfileCard } from "./ProfileCard";
 
 const highlights = [
   ["80+", "cloud policies engineered"],
@@ -26,10 +27,7 @@ export const HeroSection = () => (
         </div>
       </div>
 
-      <div className="portrait-wrap">
-        <div className="portrait-label">Security-minded. Product-aware.</div>
-        <img src="/maaz-portrait.webp" alt="Maaz Shahid" width="720" height="900" fetchPriority="high" />
-      </div>
+      <ProfileCard />
     </div>
 
     <div className="hero-proof wrap" aria-label="Selected impact">

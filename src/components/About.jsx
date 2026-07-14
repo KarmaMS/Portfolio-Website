@@ -7,14 +7,14 @@ const experience = [
     role: "Technical Consultant",
     company: "Johri Technologies",
     date: "Feb 2026 — Present",
-    summary: "Supporting CNAPP, Azure VMware Solution, Cohesity, and Wiz engagements with runbooks, control matrices, architecture notes, estimates, proposals, and deployment plans.",
+    summary: "Supporting an enterprise CloudGuard-to-Wiz CNAPP migration through rule mapping, RBAC, Policy Factory, Terraform and GitLab workflows, live-finding triage, and client-ready remediation deliverables.",
   },
   {
     icon: GraduationCap,
-    role: "Teaching Assistant — Cloud Development & Pakistan Studies",
+    role: "Full-Time Teaching Assistant — Cloud Development",
     company: "LUMS",
-    date: "Aug 2025 — Present",
-    summary: "Managing Azure access and lab infrastructure for secure cloud deployments while also mentoring students in analytical work across Pakistan’s historical and social contexts.",
+    date: "Jan 2026 — May 2026",
+    summary: "Managed Azure subscriptions, student roles, resource groups, and cloud access while resolving infrastructure issues and evaluating secure deployments, hub-spoke VPNs, and storage pipelines.",
   },
   {
     icon: ShieldCheck,
@@ -28,7 +28,7 @@ const experience = [
     role: "Cloud Security Associate",
     company: "Johri Technologies",
     date: "Oct 2023 — Apr 2024",
-    summary: "Engineered and validated 80+ AWS and 33 Azure Prisma Cloud policies, built test environments, and created documentation that cut onboarding time in half.",
+    summary: "Engineered and validated 80+ AWS and 33 Azure Prisma Cloud policies, built test environments, and created onboarding documentation that cut ramp-up time in half.",
   },
 ];
 
