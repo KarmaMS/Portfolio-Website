@@ -5,13 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/build-worker.mjs",
     "lint": "eslint src",
     "preview": "vite preview"
   },
   "dependencies": {
     "lucide-react": "^0.518.0",
-    "maaz-shahid-portfolio": "file:",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.8.2"
