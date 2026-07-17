@@ -1,4 +1,5 @@
 import { About } from "../components/About";
+import { Beyond } from "../components/Beyond";
 import { Contact } from "../components/Contact";
 import { Footer } from "../components/Footer";
 import { HeroSection } from "../components/HeroSection";
@@ -14,6 +15,7 @@ export const Home = () => (
       <About />
       <Projects />
       <TechStack />
+      <Beyond />
       <Contact />
     </main>
     <Footer />

@@ -1,5 +1,6 @@
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const navItems = [
   ["Experience", "#experience"],
@@ -18,17 +19,14 @@ export const NavBar = () => {
 
   return (
     <header className="site-header">
-      <a className="wordmark" href="#top" aria-label="Maaz Shahid, back to top">
-        MS<span>.</span>
-      </a>
+      <a className="wordmark" href="#top" aria-label="Maaz Shahid, back to top">MS<span>.</span></a>
 
       <nav className={isOpen ? "nav-links is-open" : "nav-links"} aria-label="Primary navigation">
         {navItems.map(([label, href]) => (
           <a key={href} href={href} onClick={() => setIsOpen(false)}>{label}</a>
         ))}
-        <a className="nav-resume" href="/Maaz Shahid - Resume.pdf" target="_blank" rel="noreferrer">
-          Résumé
-        </a>
+        <Link className="nav-beyond" to="/additional-info" onClick={() => setIsOpen(false)}>Meet Maazy</Link>
+        <a className="nav-resume" href="/Maaz Shahid - Resume.pdf" target="_blank" rel="noreferrer">Résumé</a>
       </nav>
 
       <button

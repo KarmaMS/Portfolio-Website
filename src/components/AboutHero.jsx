@@ -1,18 +1,33 @@
 import { ArrowDownRight } from "lucide-react";
+import { ProfileCard } from "./ProfileCard";
 
 export const AboutHero = () => (
   <section className="personal-hero section-pad" id="top">
     <div className="wrap personal-hero-grid">
-      <div>
-        <p className="eyebrow">Beyond the résumé</p>
-        <h1>Curiosity is the thread running through everything I make.</h1>
+      <div className="personal-hero-copy">
+        <p className="eyebrow">Hello again</p>
+        <h1>It’s Maazy—a curious guy who loves to explore <em>everything</em> and doesn’t give up.</h1>
         <p>
-          Away from cloud consoles and code, I travel, photograph, illustrate, and collect visual ideas.
-          This is the less formal side of the same practice: noticing details and making sense of them.
+          I travel, photograph, sketch, overthink, retry, and keep going. This page is the camera roll and notebook behind the résumé—the side of me that notices strange details and follows ideas until they become something real.
         </p>
-        <a className="text-link" href="#travel">Take a look <ArrowDownRight size={17} /></a>
+        <div className="maazy-traits" aria-label="A few things about Maazy">
+          <span>Curious by default</span><span>Stubborn about finishing</span><span>Always looking</span>
+        </div>
+        <a className="text-link" href="#travel">Open the camera roll <ArrowDownRight size={17} /></a>
       </div>
-      <img src="/maaz-portrait.webp" alt="Maaz Shahid" width="720" height="900" />
+
+      <div className="personal-photo-stage" aria-label="Maaz, then and now">
+        <ProfileCard
+          className="personal-profile-card"
+          kicker="Curiosity · Discovery · Making"
+          title="Still figuring things out"
+          priority={false}
+        />
+        <figure className="maazy-young-card">
+          <img src="/maaz-young.webp" alt="Maaz as a curious child" width="666" height="862" decoding="async" />
+          <figcaption>Same curiosity. Smaller glasses.</figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 );
