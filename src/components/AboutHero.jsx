@@ -23,7 +23,7 @@ export const AboutHero = () => (
       <div className="personal-photo-stage" aria-label="Maaz, then and now">
         <ProfileCard
           className="personal-profile-card"
-          kicker="Curiosity · Discovery · Ambition"
+          kicker="Discovery · Ambition"
           name="Maazy"
           status=""
           title=""
