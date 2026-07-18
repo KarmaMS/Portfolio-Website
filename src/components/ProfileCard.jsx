@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef } from "react";
 export const ProfileCard = ({
   className = "",
   kicker = "Security · Software · Systems",
-  status = "Selected work and experiments",
+  status = "",
   title = "Cyber Security & SWE",
   name = "Maaz Shahid",
   imageSrc = "/maaz-portrait.webp",

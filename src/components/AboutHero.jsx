@@ -6,7 +6,11 @@ export const AboutHero = () => (
     <div className="wrap personal-hero-grid">
       <div className="personal-hero-copy">
         <p className="eyebrow">Hello again</p>
-        <h1>It’s Maazy, a curious guy who loves to explore everything and doesn’t like to give up easily.</h1>
+        <h1>
+          <span className="maazy-name">It’s Maazy.</span>
+          <span className="maazy-main">A curious guy who loves to explore everything.</span>
+          <span className="maazy-closer">Doesn’t like to give up easily.</span>
+        </h1>
         <p>
           I travel, photograph, sketch, overthink, retry, and keep going. This page is the camera roll and notebook behind the résumé, the side of me that notices strange details and follows ideas until they become something real.
         </p>
