@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ArrowUpRight, Github, Linkedin, LoaderCircle, Mail, Send } from "lucide-react";
 import { Link } from "react-router-dom";
+import { MagneticLink } from "./MagneticLink";
 
 const EMAILJS_ENDPOINT = "https://api.emailjs.com/api/v1.0/email/send";
 const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
@@ -33,7 +34,7 @@ export const Contact = () => {
     if (form.website) {
       setForm(initialForm);
       setStatus("success");
-      setFeedback("Thanks — your message is on its way.");
+      setFeedback("Thanks, your message is on its way.");
       return;
     }
 
@@ -85,12 +86,12 @@ export const Contact = () => {
       <div className="contact-card wrap">
         <div className="contact-grid">
           <div className="contact-copy">
-            <p className="eyebrow">Let’s work together</p>
-            <h2>Have a hard problem that sits between systems and people?</h2>
-            <p className="contact-intro">I’m always interested in cloud security, applied research, thoughtful software, and teams that care about the details.</p>
-            <a className="button button-light" href="mailto:27100445@lums.edu.pk">
-              <Mail size={18} /> 27100445@lums.edu.pk <ArrowUpRight size={17} />
-            </a>
+            <p className="eyebrow">Start a conversation</p>
+            <h2>Got a problem worth talking through?</h2>
+            <p className="contact-intro">Whether it is cloud security, a product idea, or a tricky system, send a note. I enjoy thoughtful conversations that lead somewhere useful.</p>
+            <MagneticLink className="button button-light" href="mailto:27100445@lums.edu.pk">
+              <Mail size={18} /> Send me a note <ArrowUpRight size={17} />
+            </MagneticLink>
           </div>
 
           <form className="contact-form" onSubmit={handleSubmit}>
@@ -105,7 +106,7 @@ export const Contact = () => {
             </div>
 
             <div className="form-field">
-              <label htmlFor="contact-message">What would you like to build?</label>
+              <label htmlFor="contact-message">What are you thinking about?</label>
               <textarea id="contact-message" name="message" rows="5" value={form.message} onChange={handleChange} required />
             </div>
 

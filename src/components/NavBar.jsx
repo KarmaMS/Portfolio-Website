@@ -1,6 +1,5 @@
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 
 const navItems = [
   ["Experience", "#experience"],
@@ -25,7 +24,6 @@ export const NavBar = () => {
         {navItems.map(([label, href]) => (
           <a key={href} href={href} onClick={() => setIsOpen(false)}>{label}</a>
         ))}
-        <Link className="nav-beyond" to="/additional-info" onClick={() => setIsOpen(false)}>Meet Maazy</Link>
         <a className="nav-resume" href="/Maaz Shahid - Resume.pdf" target="_blank" rel="noreferrer">Résumé</a>
       </nav>
 

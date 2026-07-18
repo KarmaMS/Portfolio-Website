@@ -12,7 +12,7 @@ const projects = [
   },
   {
     title: "Network Security Labs",
-    type: "Applied security · Jan–Apr 2026",
+    type: "Applied security · Jan to Apr 2026",
     image: "/projects/network-security-labs.webp",
     imageAlt: "Abstract secure cloud network with a contained vulnerability trace",
     description: "Built and secured a multi-tier billing system on Oracle Cloud, then analyzed CSRF, XSS, buffer overflows, return-to-libc, and ROP with GDB.",
@@ -52,7 +52,7 @@ export const Projects = () => (
     <div className="wrap section-heading">
       <p className="eyebrow">Selected work</p>
       <h2>Proof over buzzwords.</h2>
-      <p>Research, security engineering, and product work—each framed around the problem and the outcome.</p>
+      <p>Research, security engineering, and product work, each framed around the problem and the outcome.</p>
     </div>
 
     <div className="project-grid wrap">

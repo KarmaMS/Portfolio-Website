@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef } from "react";
 export const ProfileCard = ({
   className = "",
   kicker = "Security · Software · Systems",
-  status = "Available for ambitious work",
+  status = "Selected work and experiments",
   title = "Cyber Security & SWE",
   priority = true,
 }) => {

@@ -11,7 +11,7 @@ export const TechStack = () => (
       <div className="section-heading">
         <p className="eyebrow">Working toolkit</p>
         <h2>Broad enough to connect the dots. Focused enough to ship.</h2>
-        <p>I choose tools around the system and its risk—not around a fashionable stack.</p>
+        <p>I choose tools around the system and its risk, not around a fashionable stack.</p>
       </div>
       <div className="tool-groups">
         {groups.map(([title, items]) => (

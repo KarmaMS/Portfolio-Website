@@ -12,7 +12,7 @@ export const TravelGallery = () => (
     <div className="wrap section-heading">
       <p className="eyebrow">Field notes</p>
       <h2>Places that reset my perspective.</h2>
-      <p>A small, deliberately edited selection—because a good gallery should leave room to look.</p>
+      <p>A small, deliberately edited selection because a good gallery should leave room to look.</p>
     </div>
     <div className="photo-grid wrap">
       {photos.map(([src, alt], index) => (

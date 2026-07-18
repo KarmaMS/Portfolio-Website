@@ -1,4 +1,5 @@
 import { ArrowDownRight, ArrowUpRight } from "lucide-react";
+import { MagneticLink } from "./MagneticLink";
 import { ProfileCard } from "./ProfileCard";
 
 const highlights = [
@@ -11,18 +12,18 @@ export const HeroSection = () => (
   <section className="hero section-pad" id="top">
     <div className="hero-grid wrap">
       <div className="hero-copy">
-        <p className="eyebrow"><span /> Lahore, Pakistan · Open to ambitious work</p>
+        <p className="eyebrow"><span /> Lahore, Pakistan · Security · Software</p>
         <h1>
           <span>Hi, I’m Maaz.</span>
-          I make security <em>make sense.</em>
+          I make security <strong>make sense.</strong>
         </h1>
         <p className="hero-intro">
-          Cloud policies, product code, and the messy systems between them—built carefully, explained clearly, and made useful.
+          Cloud policies, product code, and the messy systems between them, built carefully, explained clearly, and made useful.
         </p>
         <div className="hero-actions">
-          <a className="button button-primary" href="#projects">
+          <MagneticLink className="button button-primary" href="#projects">
             See what I’ve built <ArrowDownRight size={18} />
-          </a>
+          </MagneticLink>
           <a className="text-link" href="mailto:27100445@lums.edu.pk">
             Say hello <ArrowUpRight size={17} />
           </a>
