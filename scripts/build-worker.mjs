@@ -1,4 +1,4 @@
-import { mkdirSync, writeFileSync } from "node:fs";
+import { copyFileSync, mkdirSync, writeFileSync } from "node:fs";
 
 const worker = `const worker = {
   async fetch(request, env) {
@@ -17,4 +17,6 @@ export default worker;
 `;
 
 mkdirSync("dist/server", { recursive: true });
+mkdirSync("dist/.openai", { recursive: true });
 writeFileSync("dist/server/index.js", worker);
+copyFileSync(".openai/hosting.json", "dist/.openai/hosting.json");
