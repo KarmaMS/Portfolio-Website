@@ -6,7 +6,7 @@ export const AboutHero = () => (
     <div className="wrap personal-hero-grid">
       <div className="personal-hero-copy">
         <p className="eyebrow">Hello again</p>
-        <h1>It’s Maazy, a curious guy who loves to explore everything and doesn’t give up.</h1>
+        <h1>It’s Maazy, a curious guy who loves to explore everything and doesn’t like to give up easily.</h1>
         <p>
           I travel, photograph, sketch, overthink, retry, and keep going. This page is the camera roll and notebook behind the résumé, the side of me that notices strange details and follows ideas until they become something real.
         </p>
@@ -17,11 +17,17 @@ export const AboutHero = () => (
       </div>
 
       <div className="personal-photo-stage" aria-label="Maaz, then and now">
-        <ProfileCard className="personal-profile-card" priority={false} />
-        <figure className="maazy-young-card">
-          <img src="/maaz-young.webp" alt="Maaz as a curious child" width="666" height="862" decoding="async" />
-          <figcaption>Same curiosity. Smaller glasses.</figcaption>
-        </figure>
+        <ProfileCard
+          className="personal-profile-card"
+          kicker="Curiosity · Discovery · Ambition"
+          name="Maazy"
+          status=""
+          title=""
+          imageSrc="/maaz-young.webp"
+          imageAlt="Maaz as a curious child"
+          showAction={false}
+          priority={false}
+        />
       </div>
     </div>
   </section>

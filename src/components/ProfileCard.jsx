@@ -6,6 +6,10 @@ export const ProfileCard = ({
   kicker = "Security · Software · Systems",
   status = "Selected work and experiments",
   title = "Cyber Security & SWE",
+  name = "Maaz Shahid",
+  imageSrc = "/maaz-portrait.webp",
+  imageAlt = "Maaz Shahid",
+  showAction = true,
   priority = true,
 }) => {
   const cardRef = useRef(null);
@@ -54,22 +58,24 @@ export const ProfileCard = ({
       <p className="profile-card-kicker">{kicker}</p>
       <img
         className="profile-card-photo"
-        src="/maaz-portrait.webp"
-        alt="Maaz Shahid"
+        src={imageSrc}
+        alt={imageAlt}
         width="720"
         height="900"
         fetchPriority={priority ? "high" : "auto"}
         decoding="async"
       />
-      <div className="profile-card-panel">
+      <div className={`profile-card-panel${!status && !title && !showAction ? " profile-card-panel-name-only" : ""}`}>
         <div>
-          <span className="profile-card-status"><i /> {status}</span>
-          <h2>Maaz Shahid</h2>
-          <p>{title}</p>
+          {status && <span className="profile-card-status"><i /> {status}</span>}
+          <h2>{name}</h2>
+          {title && <p>{title}</p>}
         </div>
-        <a href="mailto:maazshahid1@outlook.com" aria-label="Email Maaz Shahid">
-          <ArrowUpRight size={19} />
-        </a>
+        {showAction && (
+          <a href="mailto:maazshahid1@outlook.com" aria-label="Email Maaz Shahid">
+            <ArrowUpRight size={19} />
+          </a>
+        )}
       </div>
     </article>
   );

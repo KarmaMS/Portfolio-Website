@@ -12,7 +12,6 @@ export const HeroSection = () => (
   <section className="hero section-pad" id="top">
     <div className="hero-grid wrap">
       <div className="hero-copy">
-        <p className="eyebrow"><span /> Lahore, Pakistan · Security · Software</p>
         <h1>
           <span>Hi, I’m Maaz.</span>
           I make security <strong>make sense.</strong>
@@ -25,7 +24,7 @@ export const HeroSection = () => (
             See what I’ve built <ArrowDownRight size={18} />
           </MagneticLink>
           <a className="text-link" href="mailto:maazshahid1@outlook.com" aria-label="Email Maaz Shahid at maazshahid1@outlook.com">
-            Say hello at maazshahid1@outlook.com <ArrowUpRight size={17} />
+            Say hello <ArrowUpRight size={17} />
           </a>
         </div>
       </div>

@@ -69,8 +69,7 @@ button { color: inherit; font: inherit; }
   transform: translateX(-50%);
   border: 1px solid rgba(190, 169, 255, 0.15);
   border-radius: 999px;
-  background: rgba(11, 6, 18, 0.86);
-  backdrop-filter: blur(14px);
+  background: rgba(11, 6, 18, 0.96);
   box-shadow: 0 14px 45px rgba(0, 0, 0, 0.22);
 }
 
@@ -311,7 +310,6 @@ h1, h2, h3 { line-height: 1.02; letter-spacing: -0.055em; }
   height: calc(100% - 3rem);
   object-fit: cover;
   object-position: 56% center;
-  filter: drop-shadow(0 22px 24px rgba(29, 8, 51, 0.3));
 }
 
 .profile-card-panel {
@@ -327,9 +325,10 @@ h1, h2, h3 { line-height: 1.02; letter-spacing: -0.055em; }
   padding: 1.15rem;
   border: 1px solid rgba(255, 255, 255, 0.19);
   border-radius: 1.25rem;
-  background: rgba(12, 6, 21, 0.66);
-  backdrop-filter: blur(18px);
+  background: rgba(12, 6, 21, 0.84);
 }
+
+.profile-card-panel-name-only { justify-content: flex-start; padding-block: 1rem; }
 
 .profile-card-panel h2 { margin: 0.35rem 0 0.25rem; font-size: 1.55rem; letter-spacing: -0.04em; }
 .profile-card-panel p { margin: 0; color: #d9cee7; font-size: 0.78rem; }
@@ -455,15 +454,6 @@ h1, h2, h3 { line-height: 1.02; letter-spacing: -0.055em; }
 .timeline-card h3 { margin-bottom: 1.1rem; font-size: 1.45rem; letter-spacing: -0.035em; line-height: 1.05; }
 .experience-summary { margin: 0; color: var(--paper-dim); font-size: 0.88rem; }
 
-@supports (animation-timeline: view()) {
-  .timeline-card { animation: timeline-reveal both linear; animation-timeline: view(inline); animation-range: entry 10% cover 35%; }
-}
-
-@keyframes timeline-reveal {
-  from { opacity: 0.45; transform: translateX(18px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
 .projects-section { background: var(--ink); color: var(--paper); content-visibility: auto; contain-intrinsic-size: 1500px; }
 .section-heading { margin-bottom: clamp(3rem, 6vw, 5rem); }
 .section-heading > p:last-child { max-width: 620px; margin: 1.5rem 0 0; color: var(--muted); font-size: 1rem; }
@@ -486,7 +476,7 @@ h1, h2, h3 { line-height: 1.02; letter-spacing: -0.055em; }
 .project-image { position: relative; overflow: hidden; aspect-ratio: 16 / 10; background: #090a09; }
 .project-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 450ms cubic-bezier(.2,.7,.2,1); }
 .project-card:hover .project-image img { transform: scale(1.025); }
-.project-image span { position: absolute; top: 0.8rem; left: 0.8rem; padding: 0.45rem 0.55rem; border-radius: 0.45rem; background: rgba(11, 13, 12, 0.78); color: var(--paper); font-size: 0.65rem; font-weight: 800; backdrop-filter: blur(8px); }
+.project-image span { position: absolute; top: 0.8rem; left: 0.8rem; padding: 0.45rem 0.55rem; border-radius: 0.45rem; background: rgba(11, 13, 12, 0.9); color: var(--paper); font-size: 0.65rem; font-weight: 800; }
 .project-image-contain { background: var(--paper); }
 .project-image-contain img { object-fit: contain; padding: 12%; }
 
@@ -558,12 +548,8 @@ h1, h2, h3 { line-height: 1.02; letter-spacing: -0.055em; }
 .personal-hero .text-link { margin-top: 1rem; }
 .maazy-traits { display: flex; flex-wrap: wrap; gap: 0.55rem; margin: 1.7rem 0; }
 .maazy-traits span { padding: 0.55rem 0.75rem; border: 1px solid var(--line-light); border-radius: 999px; color: var(--paper-dim); font-size: 0.72rem; }
-.personal-photo-stage { position: relative; justify-self: end; width: min(100%, 460px); min-height: 560px; }
-.personal-profile-card { position: absolute; top: 0; right: 0; width: min(100%, 370px); }
-.maazy-young-card { position: absolute; z-index: 7; bottom: 1.25rem; left: 0; width: 156px; margin: 0; overflow: hidden; border: 1px solid rgba(190, 169, 255, 0.32); border-radius: 1rem; background: var(--surface); box-shadow: 0 24px 60px rgba(0,0,0,0.35); transform: rotate(-5deg); transition: transform 220ms ease; }
-.maazy-young-card:hover { transform: rotate(-2deg) translateY(-5px); }
-.maazy-young-card img { width: 100%; aspect-ratio: 0.77; object-fit: cover; }
-.maazy-young-card figcaption { padding: 0.7rem; color: var(--paper-dim); font-size: 0.72rem; font-weight: 650; line-height: 1.25; }
+.personal-photo-stage { position: relative; justify-self: end; width: min(100%, 390px); min-height: 490px; }
+.personal-profile-card { position: absolute; top: 0; right: 0; width: 100%; }
 
 .gallery-section { background: var(--ink-elevated); color: var(--paper); content-visibility: auto; contain-intrinsic-size: 1400px; }
 .gallery-section .section-heading > p:last-child, .creative-section .section-heading > p:last-child { color: var(--muted); }
@@ -632,9 +618,8 @@ h1, h2, h3 { line-height: 1.02; letter-spacing: -0.055em; }
   .site-footer p:nth-child(2) { display: none; }
   .photo-grid, .creative-grid { grid-template-columns: repeat(2, 1fr); }
   .photo-grid .photo-wide { grid-column: span 2; }
-  .personal-photo-stage { min-height: 600px; }
-  .personal-profile-card { right: 1rem; }
-  .maazy-young-card { left: 0; }
+  .personal-photo-stage { min-height: 510px; }
+  .personal-profile-card { right: 0; }
   .beyond-card { min-height: 470px; }
 }
 
@@ -655,9 +640,8 @@ h1, h2, h3 { line-height: 1.02; letter-spacing: -0.055em; }
   .beyond-card h2 { font-size: clamp(2.8rem, 13vw, 4rem); }
   .beyond-action { right: 1.25rem; bottom: 1.25rem; left: 1.25rem; justify-content: center; }
   .personal-hero h1 { font-size: clamp(3rem, 13vw, 4.5rem); }
-  .personal-photo-stage { min-height: 540px; }
+  .personal-photo-stage { min-height: 440px; }
   .personal-profile-card { right: 0; width: min(100%, 330px); }
-  .maazy-young-card { width: 145px; }
   .photo-grid, .creative-grid { grid-template-columns: 1fr; }
   .photo-grid .photo-wide { grid-column: auto; }
   .photo-grid figure { min-height: 300px; }

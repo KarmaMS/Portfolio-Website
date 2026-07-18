@@ -24,7 +24,7 @@ export const NavBar = () => {
         {navItems.map(([label, href]) => (
           <a key={href} href={href} onClick={() => setIsOpen(false)}>{label}</a>
         ))}
-        <a className="nav-resume" href="/Maaz Shahid - Resume.pdf" target="_blank" rel="noreferrer">Résumé</a>
+        <a className="nav-resume" href="/Maaz Shahid - Resume.pdf" target="_blank" rel="noreferrer">Resume</a>
       </nav>
 
       <button
