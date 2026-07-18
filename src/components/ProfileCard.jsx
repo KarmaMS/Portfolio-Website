@@ -67,7 +67,7 @@ export const ProfileCard = ({
           <h2>Maaz Shahid</h2>
           <p>{title}</p>
         </div>
-        <a href="mailto:27100445@lums.edu.pk" aria-label="Email Maaz Shahid">
+        <a href="mailto:maazshahid1@outlook.com" aria-label="Email Maaz Shahid">
           <ArrowUpRight size={19} />
         </a>
       </div>

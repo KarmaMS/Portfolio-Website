@@ -89,7 +89,7 @@ export const Contact = () => {
             <p className="eyebrow">Start a conversation</p>
             <h2>Got a problem worth talking through?</h2>
             <p className="contact-intro">Whether it is cloud security, a product idea, or a tricky system, send a note. I enjoy thoughtful conversations that lead somewhere useful.</p>
-            <MagneticLink className="button button-light" href="mailto:27100445@lums.edu.pk">
+            <MagneticLink className="button button-light" href="mailto:maazshahid1@outlook.com">
               <Mail size={18} /> Send me a note <ArrowUpRight size={17} />
             </MagneticLink>
           </div>

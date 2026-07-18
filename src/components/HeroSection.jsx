@@ -24,8 +24,8 @@ export const HeroSection = () => (
           <MagneticLink className="button button-primary" href="#projects">
             See what I’ve built <ArrowDownRight size={18} />
           </MagneticLink>
-          <a className="text-link" href="mailto:27100445@lums.edu.pk">
-            Say hello <ArrowUpRight size={17} />
+          <a className="text-link" href="mailto:maazshahid1@outlook.com" aria-label="Email Maaz Shahid at maazshahid1@outlook.com">
+            Say hello at maazshahid1@outlook.com <ArrowUpRight size={17} />
           </a>
         </div>
       </div>
