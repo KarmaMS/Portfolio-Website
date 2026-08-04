@@ -10,7 +10,7 @@ export const TechStack = () => (
     <div className="wrap toolkit-grid">
       <div className="section-heading">
         <p className="eyebrow">Working toolkit</p>
-        <h2>Broad enough to connect the dots. Focused enough to ship.</h2>
+        <h2>Tools I trust when the details matter.</h2>
         <p>I choose tools around the system and its risk, not around a fashionable stack.</p>
       </div>
       <div className="tool-groups">
